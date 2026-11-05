@@ -39,14 +39,30 @@ function Nav({ active }) {
   return h(
     'header',
     { className: 'pv-nav' },
-    h('div', { className: 'pv-logo', 'aria-hidden': 'true' }),
-    h(Subtitle2, null, 'Playverse'),
     h(
-      'nav',
-      { className: 'pv-nav-links' },
-      h(Button, { as: 'a', href: '/', appearance: active === 'home' ? 'secondary' : 'subtle' }, '홈'),
-      h(Button, { as: 'a', href: '/members', appearance: active === 'members' ? 'secondary' : 'subtle' }, '멤버'),
+      'div',
+      { className: 'pv-nav-inner' },
+      h(
+        'a',
+        { className: 'pv-brand', href: '/' },
+        h('span', { className: 'pv-logo', 'aria-hidden': 'true' }),
+        h('span', { className: 'pv-brand-name' }, 'Playverse'),
+      ),
+      h(
+        'nav',
+        { className: 'pv-nav-links' },
+        h('a', { href: '/', className: active === 'home' ? 'is-active' : '' }, '홈'),
+        h('a', { href: '/members', className: active === 'members' ? 'is-active' : '' }, '멤버'),
+      ),
     ),
+  );
+}
+
+function Footer() {
+  return h(
+    'footer',
+    { className: 'pv-footer' },
+    h('div', { className: 'pv-footer-inner' }, h(Caption1, null, '© 2026 Playverse')),
   );
 }
 
@@ -57,53 +73,85 @@ function HomePage() {
     h(Nav, { active: 'home' }),
     h(
       'main',
-      { className: 'pv-main' },
+      null,
       h(
-        Card,
+        'section',
         { className: 'pv-hero' },
-        h('div', { className: 'pv-logo pv-logo-lg', 'aria-hidden': 'true' }),
-        h(Title1, { as: 'h1' }, 'Playverse'),
-        h(Body1, null, '플레이버스'),
-        h(Button, { as: 'a', href: '/members', appearance: 'primary' }, '멤버 소개 보기'),
+        h(
+          'div',
+          { className: 'pv-hero-inner' },
+          h(
+            'div',
+            { className: 'pv-hero-media' },
+            members.map((m) =>
+              h('div', { key: m.id, className: 'pv-tile', style: { background: m.colorHex } },
+                h('img', { src: m.image, alt: '' })),
+            ),
+          ),
+          h(
+            'div',
+            { className: 'pv-hero-text' },
+            h('h1', { className: 'pv-display' }, '플레이버스', h('br'), 'Playverse'),
+            h(Body1, { as: 'p', className: 'pv-lead' }, '플레이버스 팀 웹사이트입니다.'),
+            h(Button, { as: 'a', href: '/members', appearance: 'primary', size: 'large' }, '멤버 소개 보기'),
+          ),
+        ),
+      ),
+      h(
+        'section',
+        { className: 'pv-section' },
+        h('h2', { className: 'pv-section-title' }, '멤버'),
+        h(
+          'div',
+          { className: 'pv-cards' },
+          members.map((m) =>
+            h(
+              'a',
+              { key: m.id, className: 'pv-card', href: '/members#' + m.id },
+              h('div', { className: 'pv-card-media', style: { background: m.colorHex } },
+                h('img', { src: m.image, alt: m.callName + ' 캐릭터 이미지', loading: 'lazy' })),
+              h('h3', { className: 'pv-card-title' }, m.name),
+              h(Body1, { as: 'p', className: 'pv-card-text' }, m.callName + ' · ' + m.rp),
+            ),
+          ),
+        ),
       ),
     ),
+    h(Footer),
   );
 }
 
-function Row({ label, value }) {
-  return h(
-    'div',
-    { className: 'pv-row' },
-    h(Caption1, { className: 'pv-row-label' }, label),
-    h(Body1, { className: 'pv-row-value' }, value),
-  );
+function Info({ label, value }) {
+  return h('div', { className: 'pv-info' }, h('dt', null, label), h('dd', null, value));
 }
 
-function MemberCard({ m }) {
+function MemberSection({ m, i }) {
   return h(
-    Card,
-    { className: 'pv-member', id: m.id },
-    h(
-      CardPreview,
-      { className: 'pv-member-preview' },
-      h('img', { src: m.image, alt: m.callName + ' 캐릭터 이미지', loading: 'lazy' }),
-    ),
-    h(CardHeader, {
-      header: h(Title3, { as: 'h2' }, m.name),
-      description: h(Caption1, null, m.callName),
-      action: h(Badge, { appearance: 'outline' }, m.colorHex),
-    }),
-    h(Divider, null),
+    'section',
+    { className: 'pv-member' + (i % 2 ? ' is-reverse' : ''), id: m.id },
+    h('div', { className: 'pv-member-media', style: { background: m.colorHex } },
+      h('img', { src: m.image, alt: m.callName + ' 캐릭터 이미지', loading: i ? 'lazy' : 'eager' })),
     h(
       'div',
-      { className: 'pv-rows' },
-      h(Row, { label: '나이', value: m.age }),
-      h(Row, { label: '생일', value: m.birthday }),
-      h(Row, { label: '성별', value: m.gender }),
-      h(Row, { label: '퍼스널 컬러', value: m.colorName }),
+      { className: 'pv-member-text' },
+      h('h2', { className: 'pv-member-name' }, m.name),
+      h('p', { className: 'pv-member-call' }, m.callName, m.aside ? h('span', { className: 'pv-aside' }, ' · ' + m.aside) : null),
+      h('dl', { className: 'pv-infos' },
+        h(Info, { label: '나이', value: m.age }),
+        h(Info, { label: '생일', value: m.birthday }),
+        h(Info, { label: '성별', value: m.gender }),
+        h(Info, {
+          label: '퍼스널 컬러',
+          value: h(React.Fragment, null, h('span', { className: 'pv-swatch', style: { background: m.colorHex } }), m.colorName === m.colorHex ? m.colorHex : m.colorName + ' ' + m.colorHex),
+        }),
+      ),
+      h('div', { className: 'pv-rp' },
+        h('p', { className: 'pv-rp-label' }, 'RP'),
+        h('p', { className: 'pv-rp-text' }, m.rp),
+        m.extras.length ? h('dl', { className: 'pv-infos pv-infos-sm' }, m.extras.map(([k, v]) => h(Info, { key: k, label: k, value: v }))) : null,
+        m.notes.length ? h('ul', { className: 'pv-notes' }, m.notes.map((n) => h('li', { key: n }, n))) : null,
+      ),
     ),
-    m.rp ? h(Divider, null) : null,
-    m.rp ? h(Body1, { className: 'pv-rp' }, m.rp) : null,
   );
 }
 
@@ -114,10 +162,17 @@ function MembersPage() {
     h(Nav, { active: 'members' }),
     h(
       'main',
-      { className: 'pv-main' },
-      h(Title1, { as: 'h1' }, '멤버'),
-      h('div', { className: 'pv-grid' }, members.map((m) => h(MemberCard, { key: m.id, m }))),
+      null,
+      h('section', { className: 'pv-hero pv-hero-sm' },
+        h('div', { className: 'pv-hero-inner pv-hero-inner-sm' },
+          h('h1', { className: 'pv-display' }, '멤버'),
+          h(Body1, { as: 'p', className: 'pv-lead' }, 'Playverse 멤버를 소개합니다.'),
+          h('nav', { className: 'pv-jump' }, members.map((m) =>
+            h(Button, { key: m.id, as: 'a', href: '#' + m.id, shape: 'circular' }, m.callName))),
+        )),
+      h('div', { className: 'pv-members' }, members.map((m, i) => h(MemberSection, { key: m.id, m, i }))),
     ),
+    h(Footer),
   );
 }
 

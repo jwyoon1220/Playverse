@@ -18,11 +18,11 @@
 ## 만든 방법
 
 1. `tools/fluent-export/export.js`가 Microsoft Fluent UI(Windows 11 디자인 시스템) 컴포넌트를 서버 렌더링해 `out/`에 HTML로 내보냅니다.
-2. 내보낸 HTML을 `public/`에 복사한 뒤 직접 수정했습니다 (글꼴에 맑은 고딕 추가, 퍼스널 컬러 견본, RP 세부 항목 등).
+2. 내보낸 HTML을 `public/`에 복사한 뒤 직접 수정했습니다 (글꼴을 Noto Sans KR로 교체, 제목 강조색 등). 레이아웃은 `public/site.css`에 있으며 microsoft.com의 Windows 11 소개 페이지 구성을 참고했습니다.
 
 `export.js`를 다시 실행해도 `out/`만 바뀌고 `public/`은 그대로입니다.
 멤버 정보 수정은 `public/members.html`을 직접 고치면 됩니다.
 
 ## 로고
 
-아직 없습니다. 생기면 `class="pv-logo"` 자리(점선 상자)에 이미지를 넣으면 됩니다.
+아직 없습니다. 생기면 상단 바의 `<span class="pv-logo">` (점선 상자) 안에 `<img>`를 넣으면 됩니다.

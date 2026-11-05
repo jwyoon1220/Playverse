@@ -1,114 +1,291 @@
-/* Fluent UI에서 내보낸 HTML 위에 얹는 레이아웃 스타일 */
+/* Fluent UI에서 내보낸 HTML 위에 얹는 레이아웃 스타일
+   참고: microsoft.com Windows 11 소개 페이지 구성 */
 
-html, body { margin: 0; background: #f3f3f3; }
-body { min-height: 100vh; }
+:root {
+  --pv-text: #1a1a1a;
+  --pv-text-2: #505050;
+  --pv-line: #e5e5e5;
+  --pv-accent: #0f5ea8;
+  --pv-wrap: 1200px;
+}
 
-.pv-page { min-height: 100vh; background: #f3f3f3; }
+html, body { margin: 0; background: #ffffff; }
+body, .pv-page { font-family: 'Noto Sans KR', sans-serif; color: var(--pv-text); }
+.pv-page { min-height: 100vh; display: flex; flex-direction: column; }
+.pv-page > main { flex: 1; }
+img { max-width: 100%; }
+p { margin: 0; }
 
-/* 상단 바 (Windows 11 앱 타이틀 바 느낌) */
+/* 상단 바 */
 .pv-nav {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  height: 48px;
-  padding: 0 16px;
-  background: #ffffff;
-  border-bottom: 1px solid #e5e5e5;
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid var(--pv-line);
 }
-.pv-nav-links { margin-left: auto; display: flex; gap: 4px; }
-.pv-nav-links .fui-Button { min-width: 0; }
-
-/* 로고 자리 (로고가 생기면 이 안에 img를 넣으면 됩니다) */
-.pv-logo {
-  width: 24px;
-  height: 24px;
-  border-radius: 4px;
-  border: 1px dashed #c7c7c7;
-  box-sizing: border-box;
-}
-.pv-logo-lg { width: 96px; height: 96px; border-radius: 8px; }
-
-.pv-main {
-  max-width: 1080px;
+.pv-nav-inner {
+  max-width: var(--pv-wrap);
   margin: 0 auto;
-  padding: 24px 16px 48px;
+  height: 54px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
   box-sizing: border-box;
 }
-.pv-main > h1 { display: block; margin: 8px 0 20px; }
-
-/* 홈 */
-.pv-hero {
+.pv-brand {
+  display: flex;
   align-items: center;
-  text-align: center;
-  gap: 12px;
-  padding: 48px 24px;
-  margin-top: 24px;
+  gap: 10px;
+  color: var(--pv-text);
+  text-decoration: none;
 }
-.pv-hero h1 { margin: 0; }
-
-/* 멤버 카드 목록 */
-.pv-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 16px;
-  align-items: start;
-}
-.pv-member h2 { margin: 0; }
-
-.pv-member-preview {
-  aspect-ratio: 1 / 1;
-  background: #fafafa;
+.pv-brand-name { font-size: 18px; font-weight: 700; letter-spacing: -0.2px; }
+.pv-nav-links { display: flex; gap: 4px; }
+.pv-nav-links a {
+  position: relative;
+  padding: 8px 12px;
   border-radius: 4px;
-  overflow: hidden;
+  color: var(--pv-text);
+  text-decoration: none;
+  font-size: 14px;
 }
-.pv-member-preview img {
+.pv-nav-links a:hover { background: rgba(0, 0, 0, 0.05); }
+.pv-nav-links a.is-active::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: -9px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--pv-accent);
+}
+
+/* 로고 자리: 로고가 생기면 이 span 안에 img를 넣으면 됩니다 */
+.pv-logo {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  border: 1.5px dashed #b8b8b8;
+  box-sizing: border-box;
+  flex: none;
+}
+.pv-logo img { width: 100%; height: 100%; object-fit: contain; }
+
+/* 히어로 */
+.pv-hero {
+  background: linear-gradient(180deg, #cfe5fb 0%, #e3ecfc 55%, #efedfb 100%);
+}
+.pv-hero-inner {
+  max-width: var(--pv-wrap);
+  margin: 0 auto;
+  padding: 48px 24px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 72px;
+  align-items: center;
+}
+.pv-hero-media {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.pv-tile {
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(15, 40, 90, 0.12);
+}
+.pv-tile img,
+.pv-card-media img,
+.pv-member-media img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: top center;
   display: block;
 }
+.pv-display {
+  margin: 0;
+  font-size: 60px;
+  line-height: 1.15;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+}
+.pv-accent {
+  background: linear-gradient(90deg, #0f5ea8, #2a7fd6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.pv-lead {
+  margin: 20px 0 28px;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--pv-text-2);
+}
 
+.pv-hero-sm .pv-hero-inner-sm {
+  display: block;
+  padding: 72px 24px 56px;
+  text-align: center;
+}
+.pv-hero-sm .pv-lead { margin-bottom: 24px; }
+.pv-jump { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; }
+
+/* 홈 멤버 카드 */
+.pv-section {
+  max-width: var(--pv-wrap);
+  margin: 0 auto;
+  padding: 80px 24px 96px;
+  box-sizing: border-box;
+}
+.pv-section-title {
+  margin: 0 0 48px;
+  text-align: center;
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -0.8px;
+}
+.pv-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+.pv-card { color: var(--pv-text); text-decoration: none; }
+.pv-card-media {
+  aspect-ratio: 4 / 5;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.pv-card-media img { transition: transform 0.3s ease; }
+.pv-card:hover .pv-card-media img { transform: scale(1.03); }
+.pv-card-title {
+  margin: 20px 0 8px;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+}
+.pv-card:hover .pv-card-title { color: var(--pv-accent); }
+.pv-card-text { color: var(--pv-text-2); font-size: 15px; line-height: 1.6; }
+
+/* 멤버 페이지 */
+.pv-members { max-width: var(--pv-wrap); margin: 0 auto; padding: 0 24px; box-sizing: border-box; }
+.pv-member {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+  padding: 88px 0;
+  border-bottom: 1px solid var(--pv-line);
+  scroll-margin-top: 54px;
+}
+.pv-member:last-child { border-bottom: 0; }
+.pv-member.is-reverse .pv-member-media { order: 2; }
+.pv-member-media {
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.pv-member-name {
+  margin: 0;
+  font-size: 48px;
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+.pv-member-call { margin-top: 6px; font-size: 20px; color: var(--pv-text-2); }
+.pv-aside { font-size: 15px; }
+
+.pv-infos { margin: 32px 0 0; border-top: 1px solid var(--pv-line); }
+.pv-info {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--pv-line);
+  font-size: 16px;
+  line-height: 1.5;
+}
+.pv-info dt { color: var(--pv-text-2); }
+.pv-info dd { margin: 0; }
 .pv-swatch {
   display: inline-block;
-  width: 10px;
-  height: 10px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
-  margin-right: 4px;
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  margin-right: 8px;
+  vertical-align: -2px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15);
 }
 
-.pv-rows { display: grid; gap: 6px; }
-.pv-row {
-  display: grid;
-  grid-template-columns: 88px 1fr;
-  gap: 8px;
-  align-items: baseline;
+.pv-rp {
+  margin-top: 28px;
+  padding: 20px 24px;
+  border-radius: 8px;
+  background: #f5f5f5;
 }
-.pv-row-label { color: #616161; }
-.pv-rows-extra { margin-top: 8px; }
+.pv-rp-label { font-size: 13px; font-weight: 700; color: var(--pv-accent); letter-spacing: 0.5px; }
+.pv-rp-text { margin-top: 4px; font-size: 17px; line-height: 1.6; font-weight: 500; }
+.pv-infos-sm { margin-top: 16px; border-top-color: #e0e0e0; }
+.pv-infos-sm .pv-info { grid-template-columns: 104px 1fr; padding: 10px 0; font-size: 15px; border-bottom-color: #e0e0e0; }
+.pv-infos-sm .pv-info:last-child { border-bottom: 0; }
+.pv-notes { margin: 12px 0 0; padding-left: 20px; font-size: 15px; line-height: 1.7; }
 
-.pv-rp-label {
-  display: block;
-  font-size: 12px;
-  line-height: 16px;
+/* 푸터 */
+.pv-footer { background: #f2f2f2; }
+.pv-footer-inner {
+  max-width: var(--pv-wrap);
+  margin: 0 auto;
+  padding: 28px 24px;
+  box-sizing: border-box;
   color: #616161;
 }
-.pv-rp { display: block; }
-.pv-aside { color: #616161; }
 
-.pv-notes {
-  margin: 8px 0 0;
-  padding-left: 20px;
-  font-size: 14px;
-  line-height: 20px;
-  color: #242424;
+/* 태블릿 */
+@media (max-width: 960px) {
+  .pv-hero-inner, .pv-member { grid-template-columns: 1fr; gap: 40px; }
+  .pv-member.is-reverse .pv-member-media { order: 0; }
+  .pv-member { padding: 56px 0; }
+  .pv-member-media { max-width: 560px; }
+  .pv-cards { grid-template-columns: repeat(2, 1fr); }
 }
-.pv-notes li + li { margin-top: 2px; }
 
-/* 직접 추가한 항목도 Fluent 글자 크기에 맞춤 */
-.pv-row-label, .pv-aside { font-size: 12px; line-height: 16px; }
-.pv-row-value { font-size: 14px; line-height: 20px; }
-.pv-row-label, .pv-row-value, .pv-aside, .pv-notes, .pv-rp-label { font-family: var(--fontFamilyBase); }
+/* 휴대폰 */
+@media (max-width: 600px) {
+  .pv-nav-inner, .pv-hero-inner, .pv-section, .pv-members, .pv-footer-inner { padding-left: 16px; padding-right: 16px; }
+  .pv-nav-inner { gap: 16px; }
+  .pv-hero-inner { padding-top: 32px; padding-bottom: 40px; }
+  .pv-display { font-size: 40px; letter-spacing: -1px; }
+  .pv-lead { font-size: 16px; }
+  .pv-section { padding-top: 56px; padding-bottom: 64px; }
+  .pv-section-title { font-size: 30px; margin-bottom: 32px; }
+  .pv-cards { gap: 24px 16px; }
+  .pv-card-title { font-size: 20px; margin-top: 14px; }
+  .pv-card-text { font-size: 14px; }
+  .pv-member-name { font-size: 36px; }
+  .pv-info { grid-template-columns: 96px 1fr; }
+  .pv-infos-sm .pv-info { grid-template-columns: 84px 1fr; }
+  .pv-rp { padding: 16px; }
+}
+
+/* 내보낸 Fluent Text는 inline이라 블록으로 바꿈 */
+.pv-lead, .pv-card-text { display: block; }
+.pv-jump .fui-Button { min-width: 0; padding-left: 18px; padding-right: 18px; }
+
+/* 흰 배경 그림도 영역이 보이도록 얇은 테두리 */
+.pv-tile, .pv-card-media, .pv-member-media { position: relative; }
+.pv-tile::after, .pv-card-media::after, .pv-member-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+  pointer-events: none;
+}
+.pv-hero-sm .pv-lead { text-align: center; }
