@@ -12,7 +12,7 @@
     "extras": [
       [
         "캐디 정보",
-        "사진 참고 (머리·디테일 - LD / 의상 - SD)"
+        "머리 위에 노란 병아리 / 아래쪽 양갈래 / 니트 + 나뭇잎 배지"
       ]
     ],
     "notes": []
@@ -82,5 +82,36 @@
       "숙주 이동이 가능하다",
       "블루베리의 숙주가 되면 그 숙주의 눈이 파란색으로 변한다"
     ]
+  },
+  {
+    "id": "soyu",
+    "name": "소유",
+    "callName": "소유",
+    "birthday": "12월 24일",
+    "gender": "여",
+    "colorHex": "",
+    "colorName": "",
+    "rp": "",
+    "image": "/images/members/soyu.webp",
+    "extras": [],
+    "notes": []
+  },
+  {
+    "id": "ino",
+    "name": "이노",
+    "callName": "이노",
+    "birthday": "11월 18일",
+    "gender": "남",
+    "colorHex": "#8BB5DB",
+    "colorName": "하늘색",
+    "rp": "아홀로톨 Axolotl",
+    "image": "/images/members/ino.webp",
+    "extras": [
+      [
+        "캐디 정보",
+        "아홀로톨 옷 (#8BB5DB 하늘색) / 안경 있음"
+      ]
+    ],
+    "notes": []
   }
 ]

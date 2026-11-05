@@ -84,7 +84,7 @@ function HomePage() {
             'div',
             { className: 'pv-hero-media' },
             members.map((m) =>
-              h('div', { key: m.id, className: 'pv-tile', style: { background: m.colorHex } },
+              h('div', { key: m.id, className: 'pv-tile', style: { background: m.colorHex || '#ffffff' } },
                 h('img', { src: m.image, alt: '' })),
             ),
           ),
@@ -108,10 +108,10 @@ function HomePage() {
             h(
               'a',
               { key: m.id, className: 'pv-card', href: '/members#' + m.id },
-              h('div', { className: 'pv-card-media', style: { background: m.colorHex } },
+              h('div', { className: 'pv-card-media', style: { background: m.colorHex || '#ffffff' } },
                 h('img', { src: m.image, alt: m.callName + ' 캐릭터 이미지', loading: 'lazy' })),
               h('h3', { className: 'pv-card-title' }, m.name),
-              h(Body1, { as: 'p', className: 'pv-card-text' }, m.callName + ' · ' + m.rp),
+              h(Body1, { as: 'p', className: 'pv-card-text' }, m.rp ? m.callName + ' · ' + m.rp : m.callName),
             ),
           ),
         ),
@@ -129,7 +129,7 @@ function MemberSection({ m, i }) {
   return h(
     'section',
     { className: 'pv-member' + (i % 2 ? ' is-reverse' : ''), id: m.id },
-    h('div', { className: 'pv-member-media', style: { background: m.colorHex } },
+    h('div', { className: 'pv-member-media', style: { background: m.colorHex || '#ffffff' } },
       h('img', { src: m.image, alt: m.callName + ' 캐릭터 이미지', loading: i ? 'lazy' : 'eager' })),
     h(
       'div',
@@ -139,14 +139,14 @@ function MemberSection({ m, i }) {
       h('dl', { className: 'pv-infos' },
         h(Info, { label: '생일', value: m.birthday }),
         h(Info, { label: '성별', value: m.gender }),
-        h(Info, {
+        m.colorHex && h(Info, {
           label: '퍼스널 컬러',
-          value: h(React.Fragment, null, h('span', { className: 'pv-swatch', style: { background: m.colorHex } }), m.colorName === m.colorHex ? m.colorHex : m.colorName + ' ' + m.colorHex),
+          value: h(React.Fragment, null, h('span', { className: 'pv-swatch', style: { background: m.colorHex || '#ffffff' } }), m.colorName === m.colorHex ? m.colorHex : m.colorName + ' ' + m.colorHex),
         }),
       ),
-      h('div', { className: 'pv-rp' },
-        h('p', { className: 'pv-rp-label' }, 'RP'),
-        h('p', { className: 'pv-rp-text' }, m.rp),
+      (m.rp || m.extras.length > 0) && h('div', { className: 'pv-rp' },
+        m.rp && h('p', { className: 'pv-rp-label' }, 'RP'),
+        m.rp && h('p', { className: 'pv-rp-text' }, m.rp),
         m.extras.length ? h('dl', { className: 'pv-infos pv-infos-sm' }, m.extras.map(([k, v]) => h(Info, { key: k, label: k, value: v }))) : null,
         m.notes.length ? h('ul', { className: 'pv-notes' }, m.notes.map((n) => h('li', { key: n }, n))) : null,
       ),
