@@ -137,7 +137,6 @@ function MemberSection({ m, i }) {
       h('h2', { className: 'pv-member-name' }, m.name),
       h('p', { className: 'pv-member-call' }, m.callName, m.aside ? h('span', { className: 'pv-aside' }, ' · ' + m.aside) : null),
       h('dl', { className: 'pv-infos' },
-        h(Info, { label: '나이', value: m.age }),
         h(Info, { label: '생일', value: m.birthday }),
         h(Info, { label: '성별', value: m.gender }),
         h(Info, {
