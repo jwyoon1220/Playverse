@@ -1,0 +1,50 @@
+[
+  {
+    "id": "noran",
+    "name": "샛노란",
+    "callName": "노란",
+    "age": "08년생",
+    "birthday": "9월 4일",
+    "gender": "소녀",
+    "colorHex": "#FFD972",
+    "colorName": "노란색",
+    "rp": "Real Powerful noran",
+    "image": "/images/members/noran.webp"
+  },
+  {
+    "id": "moka",
+    "name": "MOKAnaRIA",
+    "callName": "모카",
+    "age": "18살 같은 198살",
+    "birthday": "3월 9일",
+    "gender": "남성",
+    "colorHex": "#ECDEF8",
+    "colorName": "라벤더색",
+    "rp": "백야의 여우",
+    "image": "/images/members/moka.webp"
+  },
+  {
+    "id": "hyeonsang",
+    "name": "자연현상",
+    "callName": "현상",
+    "age": "05년생",
+    "birthday": "2월 2일",
+    "gender": "남",
+    "colorHex": "#DEDEDE",
+    "colorName": "#DEDEDE",
+    "rp": "안대 밑에 파이(원주율)의 문신이 있음",
+    "image": "/images/members/hyeonsang.webp"
+  },
+  {
+    "id": "berry",
+    "name": "블루베리",
+    "callName": "베리",
+    "age": "비공개",
+    "birthday": "4월 4일",
+    "gender": "남성",
+    "colorHex": "#0055FF",
+    "colorName": "비비드 블루",
+    "rp": "머리 위 블루베리가 본체임",
+    "image": "/images/members/berry.webp"
+  }
+]

@@ -1,0 +1,114 @@
+/* Fluent UI에서 내보낸 HTML 위에 얹는 레이아웃 스타일 */
+
+html, body { margin: 0; background: #f3f3f3; }
+body { min-height: 100vh; }
+
+.pv-page { min-height: 100vh; background: #f3f3f3; }
+
+/* 상단 바 (Windows 11 앱 타이틀 바 느낌) */
+.pv-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 48px;
+  padding: 0 16px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e5e5;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.pv-nav-links { margin-left: auto; display: flex; gap: 4px; }
+.pv-nav-links .fui-Button { min-width: 0; }
+
+/* 로고 자리 (로고가 생기면 이 안에 img를 넣으면 됩니다) */
+.pv-logo {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  border: 1px dashed #c7c7c7;
+  box-sizing: border-box;
+}
+.pv-logo-lg { width: 96px; height: 96px; border-radius: 8px; }
+
+.pv-main {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+  box-sizing: border-box;
+}
+.pv-main > h1 { display: block; margin: 8px 0 20px; }
+
+/* 홈 */
+.pv-hero {
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  padding: 48px 24px;
+  margin-top: 24px;
+}
+.pv-hero h1 { margin: 0; }
+
+/* 멤버 카드 목록 */
+.pv-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+.pv-member h2 { margin: 0; }
+
+.pv-member-preview {
+  aspect-ratio: 1 / 1;
+  background: #fafafa;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.pv-member-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.pv-swatch {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.pv-rows { display: grid; gap: 6px; }
+.pv-row {
+  display: grid;
+  grid-template-columns: 88px 1fr;
+  gap: 8px;
+  align-items: baseline;
+}
+.pv-row-label { color: #616161; }
+.pv-rows-extra { margin-top: 8px; }
+
+.pv-rp-label {
+  display: block;
+  font-size: 12px;
+  line-height: 16px;
+  color: #616161;
+}
+.pv-rp { display: block; }
+.pv-aside { color: #616161; }
+
+.pv-notes {
+  margin: 8px 0 0;
+  padding-left: 20px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #242424;
+}
+.pv-notes li + li { margin-top: 2px; }
+
+/* 직접 추가한 항목도 Fluent 글자 크기에 맞춤 */
+.pv-row-label, .pv-aside { font-size: 12px; line-height: 16px; }
+.pv-row-value { font-size: 14px; line-height: 20px; }
+.pv-row-label, .pv-row-value, .pv-aside, .pv-notes, .pv-rp-label { font-family: var(--fontFamilyBase); }
