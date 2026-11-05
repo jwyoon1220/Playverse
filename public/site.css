@@ -289,3 +289,7 @@ p { margin: 0; }
   pointer-events: none;
 }
 .pv-hero-sm .pv-lead { text-align: center; }
+
+/* 홈: 테스트 메시지 */
+.pv-test { display: flex; align-items: center; justify-content: center; padding: 120px 16px; }
+.pv-test p { font-size: 20px; color: var(--pv-text-2); }
