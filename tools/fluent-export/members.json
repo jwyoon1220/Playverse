@@ -1,0 +1,90 @@
+[
+  {
+    "id": "noran",
+    "name": "샛노란",
+    "callName": "노란",
+    "age": "08년생",
+    "birthday": "9월 4일",
+    "gender": "소녀",
+    "colorHex": "#FFD972",
+    "colorName": "노란색",
+    "rp": "Real Powerful noran",
+    "image": "/images/members/noran.webp",
+    "extras": [
+      [
+        "캐디 정보",
+        "사진 참고 (머리·디테일 - LD / 의상 - SD)"
+      ]
+    ],
+    "notes": []
+  },
+  {
+    "id": "moka",
+    "name": "MOKAnaRIA",
+    "callName": "모카",
+    "age": "18살 같은 198살",
+    "birthday": "3월 9일",
+    "gender": "남성",
+    "colorHex": "#ECDEF8",
+    "colorName": "라벤더색",
+    "rp": "백야의 여우",
+    "image": "/images/members/moka.webp",
+    "aside": "\"리아\"라고 불러도 됩니다",
+    "extras": [],
+    "notes": []
+  },
+  {
+    "id": "hyeonsang",
+    "name": "자연현상",
+    "callName": "현상",
+    "age": "05년생",
+    "birthday": "2월 2일",
+    "gender": "남",
+    "colorHex": "#DEDEDE",
+    "colorName": "#DEDEDE",
+    "rp": "안대 밑에 파이(원주율)의 문신이 있음",
+    "image": "/images/members/hyeonsang.webp",
+    "extras": [
+      [
+        "신장",
+        "180 / 70"
+      ],
+      [
+        "눈 색",
+        "비밀"
+      ]
+    ],
+    "notes": []
+  },
+  {
+    "id": "berry",
+    "name": "블루베리",
+    "callName": "베리",
+    "age": "비공개",
+    "birthday": "4월 4일",
+    "gender": "남성",
+    "colorHex": "#0055FF",
+    "colorName": "비비드 블루",
+    "rp": "머리 위 블루베리가 본체임",
+    "image": "/images/members/berry.webp",
+    "extras": [
+      [
+        "나이",
+        "본체 - 3개월 / 몸 - 13살"
+      ],
+      [
+        "신장",
+        "본체 - 10cm / 몸 - 152cm"
+      ],
+      [
+        "성별",
+        "본체 - 무성 / 몸 - 남성 (TS 가능)"
+      ]
+    ],
+    "notes": [
+      "머리 위 블루베리가 본체이다",
+      "숙주 이동이 가능하다",
+      "블루베리의 숙주가 되면 그 숙주의 눈이 파란색으로 변한다"
+    ]
+  }
+]

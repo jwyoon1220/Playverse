@@ -1,0 +1,18 @@
+{
+  "name": "fluent-export",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fluentui/react-components": "^9.75.1",
+    "@fluentui/react-icons": "^2.0.345",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}
