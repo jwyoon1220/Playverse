@@ -131,5 +131,29 @@
       ]
     ],
     "notes": []
+  },
+  {
+    "id": "gomjae",
+    "name": "곰재",
+    "callName": "곰재",
+    "birthday": "7월 4일",
+    "gender": "남자",
+    "colorHex": "#34343B",
+    "colorName": "",
+    "rp": "돈 많은 한량을 꿈꾸는 편",
+    "image": "/images/members/gomjae.webp",
+    "extras": [
+      [
+        "나이",
+        "절대로 24살"
+      ],
+      [
+        "캐디 정보",
+        "사람이 아니라 안드로이드라 인외임"
+      ]
+    ],
+    "notes": [
+      "사람 아니네 하면 젯타이 코로스"
+    ]
   }
 ]
