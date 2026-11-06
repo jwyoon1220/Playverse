@@ -113,5 +113,23 @@
       ]
     ],
     "notes": []
+  },
+  {
+    "id": "piri",
+    "name": "피리",
+    "callName": "피리",
+    "birthday": "12월 15일",
+    "gender": "남성",
+    "colorHex": "#800080",
+    "colorName": "보라색",
+    "rp": "기사도?",
+    "image": "/images/members/piri.webp",
+    "extras": [
+      [
+        "캐디 정보",
+        "기사투구와 보라색 솔 / 검은 정장바지 / 흰색 와이셔츠 / 보라색 넥타이"
+      ]
+    ],
+    "notes": []
   }
 ]
