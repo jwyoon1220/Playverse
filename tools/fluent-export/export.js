@@ -121,6 +121,17 @@ function HomePage() {
   );
 }
 
+// 퍼스널 컬러 표시 문구: 이름이 없으면 코드만, 이름에 코드가 들어 있으면 이름만
+function colorText(m) {
+  if (!m.colorName) return m.colorHex;
+  return m.colorName.toUpperCase().includes(m.colorHex.toUpperCase()) ? m.colorName : m.colorName + ' ' + m.colorHex;
+}
+// 문구에 들어 있는 색 코드마다 견본을 하나씩 (색이 두 개인 멤버용)
+function colorSwatches(text) {
+  const hexes = [...new Set(text.match(/#[0-9a-fA-F]{6}\b/g) || [])];
+  return hexes.map((c) => h('span', { key: c, className: 'pv-swatch', style: { background: c } }));
+}
+
 function Info({ label, value }) {
   return h('div', { className: 'pv-info' }, h('dt', null, label), h('dd', null, value));
 }
@@ -141,7 +152,7 @@ function MemberSection({ m, i }) {
         h(Info, { label: '성별', value: m.gender }),
         m.colorHex && h(Info, {
           label: '퍼스널 컬러',
-          value: h(React.Fragment, null, h('span', { className: 'pv-swatch', style: { background: m.colorHex || '#ffffff' } }), m.colorName === m.colorHex ? m.colorHex : m.colorName + ' ' + m.colorHex),
+          value: h(React.Fragment, null, ...colorSwatches(colorText(m)), colorText(m)),
         }),
       ),
       (m.rp || m.extras.length > 0) && h('div', { className: 'pv-rp' },

@@ -155,5 +155,31 @@
     "notes": [
       "사람 아니네 하면 젯타이 코로스"
     ]
+  },
+  {
+    "id": "sleep",
+    "name": "슬립",
+    "callName": "슬립",
+    "birthday": "2월 1일",
+    "gender": "남성",
+    "colorHex": "#7C3833",
+    "colorName": "",
+    "rp": "영원한 20살~",
+    "image": "/images/members/sleep.webp",
+    "extras": [],
+    "notes": []
+  },
+  {
+    "id": "hwidam",
+    "name": "문휘담",
+    "callName": "문휘담",
+    "birthday": "7월 24일",
+    "gender": "남",
+    "colorHex": "#9E8373",
+    "colorName": "#9E8373 / #00FF10",
+    "rp": "",
+    "image": "/images/members/hwidam.webp",
+    "extras": [],
+    "notes": []
   }
 ]
