@@ -9,12 +9,16 @@
 
   function card(m, i) {
     var hex = color(m.colorHex);
-    var colorVal = [m.colorName, hex].filter(function (v) { return v && v !== hex || v === hex; })
-      .filter(function (v, k, a) { return v && a.indexOf(v) === k; }).join(' ');
+    // 이름이 없으면 코드만, 이름에 코드가 들어 있으면 이름만 표시
+    var colorVal = !m.colorName ? hex
+      : (hex && m.colorName.toUpperCase().indexOf(hex.toUpperCase()) === -1 ? m.colorName + ' ' + hex : m.colorName);
+    // 문구 속 색 코드마다 견본 하나씩 (색이 두 개인 멤버용)
+    var swatches = (String(colorVal || '').match(/#[0-9a-fA-F]{6}\b/g) || [])
+      .filter(function (v, k, a) { return a.indexOf(v) === k; })
+      .map(function (c) { return '<span class="pv-swatch" style="background:' + c + '"></span>'; }).join('');
     var infos = '<div class="pv-info"><dt>생일</dt><dd>' + esc(m.birthday) + '</dd></div>' +
       '<div class="pv-info"><dt>성별</dt><dd>' + esc(m.gender) + '</dd></div>' +
-      (colorVal ? '<div class="pv-info"><dt>퍼스널 컬러</dt><dd>' +
-        (hex ? '<span class="pv-swatch" style="background:' + hex + '"></span>' : '') + esc(colorVal) + '</dd></div>' : '');
+      (colorVal ? '<div class="pv-info"><dt>퍼스널 컬러</dt><dd>' + swatches + esc(colorVal) + '</dd></div>' : '');
     var extras = (m.extras || []).map(function (e) {
       return '<div class="pv-info"><dt>' + esc(e[0]) + '</dt><dd>' + esc(e[1]) + '</dd></div>';
     }).join('');
