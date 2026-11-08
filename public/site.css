@@ -287,6 +287,36 @@ p { margin: 0; }
 }
 .pv-hero-sm .pv-lead { text-align: center; }
 
-/* 홈: 테스트 메시지 */
+/* (이전 테스트 메시지 스타일) */
 .pv-test { display: flex; align-items: center; justify-content: center; padding: 120px 16px; }
 .pv-test p { font-size: 20px; color: var(--pv-text-2); }
+
+/* 홈 */
+.pv-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.pv-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 0 22px; border-radius: 4px;
+  border: 1px solid #d1d1d1; background: #fff; color: var(--pv-text);
+  font-size: 15px; font-weight: 500; text-decoration: none;
+}
+.pv-btn:hover { background: #f5f5f5; }
+.pv-btn-primary { background: var(--pv-accent); border-color: var(--pv-accent); color: #fff; }
+.pv-btn-primary:hover { background: #0c4c88; }
+.pv-hero .pv-lead b { color: var(--pv-text); }
+.pv-feats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.pv-feat { padding: 28px; border-radius: 8px; background: #f7f9fc; border: 1px solid var(--pv-line); }
+.pv-feat-ico { font-size: 32px; line-height: 1; }
+.pv-feat h3 { margin: 16px 0 8px; font-size: 22px; font-weight: 700; }
+.pv-name { margin-top: 32px; padding: 40px 32px; border-radius: 8px; text-align: center; background: linear-gradient(180deg, #cfe5fb 0%, #efedfb 100%); }
+.pv-name-label { font-size: 13px; font-weight: 700; letter-spacing: 0.5px; color: var(--pv-accent); }
+.pv-name-text { margin: 12px auto 0; max-width: 720px; font-size: 22px; line-height: 1.6; font-weight: 500; }
+.pv-name-by { margin-top: 16px; font-size: 15px; color: var(--pv-text-2); }
+.pv-band { background: #f5f5f5; }
+.pv-section-sm { padding-top: 72px; padding-bottom: 72px; }
+.pv-band .pv-cards { grid-template-columns: repeat(5, 1fr); gap: 24px; }
+.pv-band .pv-card-title { font-size: 18px; margin-top: 12px; }
+.pv-band .pv-card-text { font-size: 13px; }
+.pv-more { margin-top: 48px; text-align: center; }
+html { scroll-behavior: smooth; }
+@media (max-width: 960px) { .pv-feats { grid-template-columns: 1fr; } .pv-band .pv-cards { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 600px) { .pv-band .pv-cards { grid-template-columns: repeat(2, 1fr); } .pv-name-text { font-size: 18px; } }
