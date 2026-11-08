@@ -65,16 +65,13 @@ p { margin: 0; }
   background: var(--pv-accent);
 }
 
-/* 로고 자리: 로고가 생기면 이 span 안에 img를 넣으면 됩니다 */
+/* 로고 */
 .pv-logo {
-  width: 26px;
-  height: 26px;
-  border-radius: 6px;
-  border: 1.5px dashed #b8b8b8;
-  box-sizing: border-box;
+  display: flex;
+  height: 38px;
   flex: none;
 }
-.pv-logo img { width: 100%; height: 100%; object-fit: contain; }
+.pv-logo img { width: auto; height: 100%; }
 
 /* 히어로 */
 .pv-hero {
