@@ -4,3 +4,6 @@ compatibility_date = "2026-11-01"
 
 [assets]
 directory = "./public"
+
+# `wrangler preview`(브랜치 미리보기 빌드)에 필요한 블록. 비어 있어도 됩니다.
+[previews]
