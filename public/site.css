@@ -320,3 +320,44 @@ p { margin: 0; }
 html { scroll-behavior: smooth; }
 @media (max-width: 960px) { .pv-feats { grid-template-columns: 1fr; } .pv-band .pv-cards { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 600px) { .pv-band .pv-cards { grid-template-columns: repeat(2, 1fr); } .pv-name-text { font-size: 18px; } }
+
+/* 다크 모드 (시스템 설정을 따라감, Windows 11 다크 테마 색감) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --pv-text: #ffffff;
+    --pv-text-2: #c8c8c8;
+    --pv-line: #3a3a3a;
+    --pv-accent: #60cdff;
+  }
+  html, body { background: #202020; }
+  .fui-FluentProvider.fui-FluentProvider {
+    --colorNeutralBackground1: #202020;
+    --colorNeutralBackground1Hover: #2d2d2d;
+    --colorNeutralBackground3: #2b2b2b;
+    --colorNeutralForeground1: #ffffff;
+    --colorNeutralForeground2: #d6d6d6;
+    --colorNeutralForeground3: #adadad;
+    --colorNeutralStroke1: #666666;
+    --colorNeutralStroke2: #525252;
+    --colorBrandBackground: #0f6cbd;
+    --colorBrandForeground1: #60cdff;
+  }
+  .pv-nav { background: rgba(32, 32, 32, 0.85); }
+  .pv-nav-links a:hover { background: rgba(255, 255, 255, 0.08); }
+  .pv-hero { background: linear-gradient(180deg, #0f2a45 0%, #1a2540 55%, #231f3d 100%); }
+  .pv-accent { background: linear-gradient(90deg, #60cdff, #8fb4ff); -webkit-background-clip: text; background-clip: text; }
+  .pv-tile { box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45); }
+  .pv-tile::after, .pv-card-media::after, .pv-member-media::after { box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12); }
+  .pv-feat { background: #2b2b2b; }
+  .pv-name { background: linear-gradient(180deg, #17324f 0%, #2a2447 100%); }
+  .pv-band { background: #272727; }
+  .pv-btn { background: #333333; border-color: #4a4a4a; }
+  .pv-btn:hover { background: #3d3d3d; }
+  .pv-btn-primary { background: #60cdff; border-color: #60cdff; color: #003a5c; }
+  .pv-btn-primary:hover { background: #4cb8ea; }
+  .pv-rp { background: #2b2b2b; }
+  .pv-infos-sm, .pv-infos-sm .pv-info { border-color: #3a3a3a; }
+  .pv-footer { background: #1a1a1a; }
+  .pv-footer-inner { color: #adadad; }
+}
