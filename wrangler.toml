@@ -1,18 +1,6 @@
+# 정적 파일만 배포 (Worker 스크립트, D1 없음)
 name = "playverse"
-main = "src/worker.js"
 compatibility_date = "2026-11-01"
 
 [assets]
 directory = "./public"
-binding = "ASSETS"
-run_worker_first = ["/api/*", "/images/*"]
-
-[[d1_databases]]
-binding = "DB"
-database_name = "playverse-db"
-database_id = "6ce8ee4e-0932-4a4f-9f56-997a6499eaf8"
-
-# R2를 대시보드에서 활성화하고 버킷을 만든 뒤 주석을 해제하세요.
-# [[r2_buckets]]
-# binding = "IMAGES"
-# bucket_name = "playverse-images"

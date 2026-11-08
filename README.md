@@ -1,28 +1,36 @@
 # Playverse 플레이버스
 
-팀 웹사이트입니다. Cloudflare Pages에 그대로 올리는 정적 사이트입니다.
+팀 웹사이트입니다. 서버 코드나 데이터베이스 없이 `public/` 폴더의 정적 파일만 배포합니다.
 
-## Cloudflare Pages 설정
+## 배포 (Cloudflare Workers 정적 자산)
 
-- Framework preset: `None`
-- Build command: 비워두기
-- Build output directory: `public`
+`wrangler.toml`에 정적 파일 폴더(`./public`)만 지정되어 있습니다.
 
-`/members` 주소는 Cloudflare Pages가 `members.html`로 자동 연결합니다.
+```bash
+npx wrangler deploy
+```
+
+`/members` 주소는 `members.html`로 연결됩니다.
 
 ## 구조
 
-- `public/` — 배포되는 사이트 (index.html, members.html, site.css, images/)
-- `tools/fluent-export/` — 페이지 뼈대를 만든 도구
+- `public/` — 배포되는 사이트 (index.html, members.html, site.css, images/, 파비콘)
+- `tools/fluent-export/` — 페이지 뼈대를 만드는 도구와 멤버 데이터(`members.json`)
+
+## 멤버 추가·수정
+
+1. `public/images/members/`에 이미지를 넣습니다 (webp 권장).
+2. `tools/fluent-export/members.json`을 고칩니다.
+3. 생성기를 실행합니다.
+
+   ```bash
+   cd tools/fluent-export && npm install && node export.js
+   ```
+
+4. `out/members.html`을 `public/members.html`로 복사한 뒤, 기존 파일처럼 `<head>` 부분을 손봅니다.
+   - 글꼴 변수(`--fontFamilyBase`, `--fontFamilyNumeric`)를 `'Noto Sans KR', sans-serif`로 바꿉니다.
+   - Google Fonts, 파비콘, `site.css` 링크를 넣습니다.
 
 ## 만든 방법
 
-1. `tools/fluent-export/export.js`가 Microsoft Fluent UI(Windows 11 디자인 시스템) 컴포넌트를 서버 렌더링해 `out/`에 HTML로 내보냅니다.
-2. 내보낸 HTML을 `public/`에 복사한 뒤 직접 수정했습니다 (글꼴을 Noto Sans KR로 교체, 제목 강조색 등). 레이아웃은 `public/site.css`에 있으며 microsoft.com의 Windows 11 소개 페이지 구성을 참고했습니다.
-
-`export.js`를 다시 실행해도 `out/`만 바뀌고 `public/`은 그대로입니다.
-멤버 정보 수정은 `public/members.html`을 직접 고치면 됩니다.
-
-## 로고
-
-아직 없습니다. 생기면 상단 바의 `<span class="pv-logo">` (점선 상자) 안에 `<img>`를 넣으면 됩니다.
+`tools/fluent-export/export.js`가 Microsoft Fluent UI(Windows 11 디자인 시스템) 컴포넌트를 HTML로 내보냅니다. 그 HTML을 `public/`에 복사해서 직접 손봤습니다. 레이아웃은 `public/site.css`에 있고, microsoft.com의 Windows 11 소개 페이지 구성을 참고했습니다.
