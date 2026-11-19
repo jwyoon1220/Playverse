@@ -71,6 +71,7 @@ p { margin: 0; }
   height: 38px;
   flex: none;
 }
+.pv-logo picture { display: contents; }
 .pv-logo img { width: auto; height: 100%; }
 
 /* 히어로 */

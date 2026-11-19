@@ -45,7 +45,7 @@ function Nav({ active }) {
       h(
         'a',
         { className: 'pv-brand', href: '/' },
-        h('span', { className: 'pv-logo', 'aria-hidden': 'true' }, h('img', { src: '/images/logo.png', alt: '', width: 224, height: 128 })),
+        h('span', { className: 'pv-logo', 'aria-hidden': 'true' }, h('picture', null, h('source', { srcSet: '/images/logo-dark.png', media: '(prefers-color-scheme: dark)' }), h('img', { src: '/images/logo.png', alt: '', width: 177, height: 128 }))),
         h('span', { className: 'pv-brand-name' }, 'Playverse'),
       ),
       h(
